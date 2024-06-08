@@ -1,0 +1,45 @@
+#include <iostream>
+#include <math.h>
+#include <set>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+//isPossible returns true if the placed cows >= desired no of cows
+//if its true we change the low => mid+1
+bool isPossible(int minDist, vector<int> index,  int cows){
+    int currPos = index[0];
+    int noOfCows = 1;
+    for(int i=1; i<index.size(); i++){
+        if(index[i]-currPos>=minDist){
+             noOfCows++;
+             currPos = index[i];
+        }
+        else continue;
+    }
+    if(noOfCows >= cows) return true;
+    else return false; 
+}
+int main(){
+    int n, cows;
+    cin>>n>>cows;
+    vector<int> index(n, 0);
+    for(int i=0; i<n; i++) cin>>index[i];
+    sort(index.begin(), index.end());
+    int low = 1;
+    int high = index[n-1]-index[0];
+    while(low<=high){
+        int mid = (low+high)/2;
+        if(isPossible(mid, index, cows)){
+            low=mid+1;
+        }
+        else{
+            high=mid-1;
+        }
+    }
+    cout<<high<<endl;
+}
