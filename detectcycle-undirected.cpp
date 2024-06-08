@@ -25,7 +25,9 @@ bool detectCycle(int vertex, int parentvertex, vector<vector<int> > &adjMat, vec
     for(int i=0; i<N; i++){
         if(adjMat[i][vertex]==1){
             if(vis[i]==0){
-                detectCycle(i, vertex, adjMat, vis);
+                if(detectCycle(i, vertex, adjMat, vis)==true){
+                     return true;
+                }
             }
             else if(vis[i]==1 && i!=parentvertex){
                 //cycle detected
