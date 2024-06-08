@@ -1,0 +1,1 @@
+{"name":"Local: burstballoons-2","url":"/Users/susan/swc/burstballoons-2.cpp","tests":[{"id":1717821789487,"input":"2\n1 5","output":""},{"id":1717822124258,"input":"4 \n3 1 5 8","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/susan/swc/burstballoons-2.cpp","group":"local","local":true}
