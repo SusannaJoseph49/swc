@@ -12,7 +12,7 @@
 using namespace std;
 //pretty much same as mrkim
 //instead of dist function we have adjMat
-//When we check for not visited and countruesvis==n-1 we add another condition if adjMat!=0
+//When we check for not visited and countriesvis==n-1 we add another condition if adjMat!=0
 int solve(int index, int countriesvis, vector<vector<int> > &adjMat, vector<int> &vis, int cost, int &n ){
     if(countriesvis==n-1 && adjMat[index][0]!=0){
         return cost=cost+adjMat[index][0];

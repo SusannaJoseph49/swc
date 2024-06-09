@@ -15,7 +15,7 @@ using namespace std;
 //we define an isValid frunction also which checks for bounds. It should also havr conditions grid[x][y]==2 or grid[x][y]==0 (jewel or path)
 
 
-//in solve functo we take paramerets int r, int c, and int diaminds
+//in solve function we take paramerets int r, int c, and int diamonds
 //first we chek if we have reached the end of the matrix, i.e, r==n-1 and c==n-1
 ////BASE CONDITION
 ////we check if diamonds > value . If yes we change the value of value to diamonds and we put the grid matrix to the ans matrix

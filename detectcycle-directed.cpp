@@ -45,7 +45,7 @@ int main(){
     }
     vector<int> vis(N, 0);
     vector<int> pathvis(N, 0);
-    or(int i=0; i<N; i++){
+    for(int i=0; i<N; i++){
         if(vis[i]==0){
             if(detectCycle(i, adjMat, vis, pathvis)){
                 cout<<"cycle detected"<<endl;

@@ -48,16 +48,16 @@ int main(){
            cin>>start>>end>>probability;
            adjMat[start][end]=probability;
         }
-    solve(1, adjMat, nodes, time, 1.0, ans);
-    double finalprob=0.0;
-    int finaldest;
-    for(int i=1; i<=nodes; i++){
-        if(ans[i]>finalprob){
-            finalprob=ans[i];
-            finaldest=i;
+        solve(1, adjMat, nodes, time, 1.0, ans);
+        double finalprob=0.0;
+        int finaldest;
+        for(int i=1; i<=nodes; i++){
+            if(ans[i]>finalprob){
+                finalprob=ans[i];
+                finaldest=i;
+            }
         }
-    }
-    cout<<finaldest<<" "<<finalprob<<endl;
+        cout<<finaldest<<" "<<finalprob<<endl;
     }
 
 

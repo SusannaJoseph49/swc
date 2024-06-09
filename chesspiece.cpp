@@ -11,6 +11,11 @@
 
 using namespace std;
 
+//we are given just the dimensions of the chess board(NxM), the starting positiond (R,C), and final position (S,K)
+//queue of type  ->> queue<pair<pair<int, int>, int> > q. We push ((R-1, C-1),0) into the wueue first with vis[R-1][C-1]=1;
+//we make a visited vector of NxM to node the visited values (make it 1 when we encounter it inside the 1 to 4 loop)
+//to the check condition for if they have reced target outside the 1 to 4 loop
+
 int main(){
     int N, M, R, C, S, K; 
     cin>>N>>M;

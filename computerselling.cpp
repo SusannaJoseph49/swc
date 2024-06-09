@@ -9,15 +9,16 @@
 #include <algorithm>
 
 using namespace std;
+//GLOBAL INITIALIZATIONS ==>> struct configuration (D,E,F,SPi),  configuration array m[10], int D, E, F, d, e, config
+//GLOBAL INITIALIZATIONS ==>> int ans = 0; (VERY IMPORTANT) (We initialize ans to zero intide every test case also)
+
+//solve(0,0,D,E,F,0) => solve(index, countconfig, D, E, F, cost)
 
 struct configuration {
     int D; int E; int F; int SPi;
 };
 configuration m[10];
-
 int D, E, F, d, e, config;
- 
-//very imp to initialize ans to zero globally//
 int ans=0;
 
 void solve(int index, int countconfig, int D, int E, int F, int cost){
@@ -37,7 +38,6 @@ void solve(int index, int countconfig, int D, int E, int F, int cost){
         if(D-m[index].D*i>=0 && E-m[index].E*i>=0 && F-m[index].F*i>=0 ){
             solve(index+1, countconfig+1, D-m[index].D*i, E-m[index].E*i, F-m[index].F*i, cost+m[index].SPi*i);
             i++;
-
         }
         else{
             break;

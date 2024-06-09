@@ -6,6 +6,8 @@
 
 using namespace std;
 
+//solve(pos, fisher1, fisher2, fishrer3, dp)
+
 int N, gatePos1, gatePos2, gatePos3;
 
 int calculateHash(int a, int b, int c) {

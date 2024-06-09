@@ -1,0 +1,1 @@
+{"name":"Local: pillerpipe","url":"/Users/susan/swc/pillerpipe.cpp","tests":[{"id":1717915619608,"input":"1\n5 \n1 2 3 4 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/susan/swc/pillerpipe.cpp","group":"local","local":true}
