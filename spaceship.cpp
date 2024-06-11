@@ -1,79 +1,55 @@
 #include <iostream>
-#include <math.h>
-#include <set>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-
 using namespace std;
+ 
+int a[100][100];
 int n;
-void updateMatrix(int row, int col, vector<vector<int> > &grid){
-    if(row<0) return;
-    int upperLimit = max(0, row-4);
-    for(int i=row;i>=upperLimit;i--){
-        for(int j=0; j<=4; j++){
-            if(grid[i][j]==2){
-                grid[i][j]=0;
-            }
-        }
-    }
-
+ 
+bool valid(int r, int c){
+  if(r<n && r>=0 && c<5 && c>=0)return true;
+  return false;
 }
-int solve(int row, int col, vector<vector<int> > &grid, int bombs){
-    if(row<=0 || col<=0 || row>n || col>=5) return 0;
-    int ans = 0;
+ 
+int solve(int r, int c, int power, int effect){
 
-    //up
-    if(grid[row-1][col]==1 && row>0){
-        ans=max(ans, 1+solve(row-1, col, grid, bombs));
-    }
-    else if(grid[row-1][col]==0 && row>0){
-        ans=max(ans, solve(row-1, col, grid, bombs));
-    }
-
-
-    //left
-    if(grid[row-1][col-1]==1 && row>0 && col>0){
-        ans=max(ans,1+solve(row-1, col-1, grid, bombs));
-    }
-    else if(grid[row-1][col-1]==0 && row>0 && col>0){
-        ans=max(ans,solve(row-1, col-1, grid, bombs));
-    }
-
+  if(r<0) return 0;
+  int ans = 0;
+  int p = 0;
+  for(int i = -1; i <=1; i++){
+ 
+    int y = c+i;
+    int x = r-1;
     
-    //right
-    if(grid[row-1][col+1]==1 && row>0 && col>0){
-        ans=max(ans,1+solve(row-1, col+1, grid, bombs));
+    if(valid(x,y)){
+      if(a[x][y] == 2){
+         if(power == 0 && effect >  0){
+            p = solve(x,y,power,effect -1);
+         }
+         if(power == 1){
+           p = solve(x,y,power-1,5);
+         }
+      }
+      else if(a[x][y] == 1 ||a[x][y] == 0){
+        if(power == 0)
+        p = solve(x,y,power,effect-1);
+        else 
+        p = solve(x,y,power,5);
+      }
     }
-    else if(grid[row-1][col+1]==0 && row>0 && col>0){
-        ans=max(ans,solve(row-1, col+1, grid, bombs));
-    }
-    //bomb case
-    if(ans==0 && bombs>0){
-        updateMatrix(row, col, grid);
-        ans=max(ans, solve(row, col, grid, bombs-1));
-    }
-    return ans;
-
-
+    ans = max(ans , p);
+  }
+   if(a[r][c] == 1)ans++;
+   return ans;
 }
-int main(){
-    int T;
-    cin>>T;
-    while(T--){
+ 
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
         cin>>n;
-        vector<vector<int> > grid(n, vector<int>(5));
-        for(int i=0; i<n; i++){
-            for(int j=0; j<5; j++){
-                cin>>grid[i][j];
-            }
-        }
-        cout<<solve(n, 2, grid, 1);
+        for(int i = 0; i<100; i++)for(int j =0; j<100; j++)a[i][j] = 0;
+        for(int i =0; i<n; i++)
+            for(int j = 0; j<5; j++) cin>>a[i][j];
+        cout<<solve(n,2,1,0)<<endl;
     }
     return 0;
-
 }

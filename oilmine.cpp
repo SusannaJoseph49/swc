@@ -55,7 +55,8 @@ int main(){
         for(int i=0; i<mines; i++){
             solve(i, oilmines, vis, INT_MAX, INT_MIN, 0, 0, ans);
         }
-        cout<<ans<<endl;
+        if(companies<=mines)cout<<ans<<endl;
+        else if(companies>mines)cout<<"-1"<<endl;
 
     }
 }
